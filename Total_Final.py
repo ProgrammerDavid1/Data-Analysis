@@ -32,10 +32,6 @@ st.markdown(
 # 한국어 폰트 적용
 set_korean_font()
 
-
-# Streamlit 페이지 설정
-st.set_page_config(page_title="혼인율 및 결혼 인식 변화 분석", layout="wide")
-
 #####################################
 #1. 결혼인식 대비 대한 혼인율 데이터
 
