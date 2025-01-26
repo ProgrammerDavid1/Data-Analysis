@@ -255,6 +255,8 @@ if option == "결혼 및 혼인 데이터":
     if uploaded_file is not None:
         try:
             # 데이터 읽기
+            # 한글 폰트 적용
+            set_korean_font()
             data = pd.read_excel(uploaded_file)
         
             # 열 이름 간소화
