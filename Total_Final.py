@@ -255,19 +255,6 @@ if option == "결혼 및 혼인 데이터":
     if uploaded_file is not None:
         try:
             # 데이터 읽기
-           # 한글 폰트 설정 함수
-            def set_korean_font():
-                font_path = "NotoSansKR-Regular.ttf"  # 프로젝트 디렉토리에 업로드된 폰트 파일 경로
-                if os.path.exists(font_path):
-                    fm.fontManager.addfont(font_path)
-                    plt.rcParams['font.family'] = 'Noto Sans KR'
-                    plt.rcParams['axes.unicode_minus'] = False  # 마이너스 깨짐 방지
-                else:
-                    st.error("한글 폰트 파일을 찾을 수 없습니다. 'NotoSansKR-Regular.ttf' 파일을 프로젝트 디렉토리에 추가하세요.")
-                    raise FileNotFoundError("한글 폰트 파일이 없습니다.")
-            
-            # 한글 폰트 적용
-            set_korean_font()
             data = pd.read_excel(uploaded_file)
         
             # 열 이름 간소화
