@@ -25,4 +25,4 @@ By following these instructions, you can fully utilize the website's functionali
 그리고 만약에 웹사이트에 들어갔는데, 글자가 보이지 않는다 -> 오른쪽 상단의 3개의 점을 클릭 후 setting에서 app theme을 Light로 바꾸면 글자가 잘 보인다. Dark 상태가 본인 pc의 기본 세팅이면 글자가 보이지 않는다.<br>
 <br>
 
-URL about Marriage and Birth Rates: 
+URL about Marriage and Birth Rates: https://data-analysis-zvzy82cbwnsjq4beqsnatk.streamlit.app/
