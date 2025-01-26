@@ -211,6 +211,9 @@ if option == "결혼 및 혼인 데이터":
     
     # 그래프 시각화
     fig, ax = plt.subplots(figsize=(14, 8))
+    # 한글 폰트 설정을 명시적으로 적용
+    plt.rcParams['font.family'] = 'Noto Sans KR'
+    plt.rcParams['axes.unicode_minus'] = False
     df_plot.plot(kind="bar", stacked=True, ax=ax, alpha=0.85, cmap="tab10")
 
     # 그래프 스타일 설정
