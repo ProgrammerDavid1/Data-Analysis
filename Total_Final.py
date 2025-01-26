@@ -11,8 +11,21 @@ import os
 plt.rcParams['font.family'] = 'Malgun Gothic'  # Windows 사용자
 plt.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
 
-# Streamlit 앱 시작
-st.title("한국어 폰트 설정 테스트")
+# Streamlit 페이지 설정
+st.set_page_config(page_title="결혼과 출산 데이터 분석", layout="wide")
+
+# 한글 폰트 설정 (Noto Sans KR 사용)
+def set_korean_font():
+    font_path = "NotoSansKR-VariableFont_wght.ttf"  # 프로젝트 디렉토리에 업로드된 폰트 파일 경로
+    if os.path.exists(font_path):
+        fm.fontManager.addfont(font_path)
+        plt.rcParams['font.family'] = 'Noto Sans KR'
+        plt.rcParams['axes.unicode_minus'] = False
+    else:
+        raise FileNotFoundError("폰트 파일을 찾을 수 없습니다. 'NotoSansKR-VariableFont_wght.ttf'를 업로드하세요.")
+
+# 한글 폰트 적용
+set_korean_font()
 
 
 #####################################
