@@ -9,7 +9,7 @@ import os
 
 # 한글 폰트 설정 (프로젝트 내부에서 폰트 로드)
 def set_korean_font():
-    font_path = "NotoSansKR-Regular.otf"  # 프로젝트 디렉토리에 업로드된 폰트 파일 경로
+    font_path = "NotoSansKR-Regular.ttf"  # 프로젝트 디렉토리에 업로드된 폰트 파일 경로
     if os.path.exists(font_path):
         fm.fontManager.addfont(font_path)
         plt.rc('font', family='Noto Sans KR')
