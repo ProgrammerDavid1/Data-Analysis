@@ -7,18 +7,31 @@ from matplotlib import font_manager as fm
 from streamlit_option_menu import option_menu
 import os
 
-# 한글 폰트 설정 (프로젝트 내부에서 폰트 로드)
+# 한글 폰트 설정
 def set_korean_font():
-    font_path = "NotoSansKR-VariableFont_wght.ttf"  # 다운받은 폰트 파일 경로
-    if os.path.exists(font_path):  # 파일이 존재하는지 확인
-        fm.fontManager.addfont(font_path)  # 폰트 등록
-        plt.rc('font', family='Noto Sans KR')  # 폰트 이름 설정
-        plt.rc('axes', unicode_minus=False)  # 마이너스 기호 깨짐 방지
+    font_path = "NotoSansKR-VariableFont_wght.ttf"  # 프로젝트 디렉토리에 저장된 폰트 파일
+    if os.path.exists(font_path):
+        fm.fontManager.addfont(font_path)
+        plt.rc('font', family='Noto Sans KR')
+        plt.rc('axes', unicode_minus=False)
     else:
-        raise FileNotFoundError(f"폰트 파일을 찾을 수 없습니다. '{font_path}'를 프로젝트 디렉토리에 업로드하세요.")
+        raise FileNotFoundError("폰트 파일이 없습니다. 'NotoSansKR-VariableFont_wght.ttf'를 확인하세요.")
+
+# Streamlit 배경 색상 및 폰트 설정
+st.markdown(
+    """
+    <style>
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # 한국어 폰트 적용
 set_korean_font()
+
 
 # Streamlit 페이지 설정
 st.set_page_config(page_title="혼인율 및 결혼 인식 변화 분석", layout="wide")
