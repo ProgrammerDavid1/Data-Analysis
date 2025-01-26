@@ -7,20 +7,15 @@ from matplotlib import font_manager as fm
 from streamlit_option_menu import option_menu
 import os
 
-# 한글 폰트 설정 (Streamlit Cloud에서도 적용 가능하도록)
+# 한글 폰트 설정 (프로젝트 내부에서 폰트 로드)
 def set_korean_font():
-    font_url = "https://github.com/google/fonts/raw/main/ofl/notosanskr/NotoSansKR-Regular.otf"
-    font_path = "/tmp/NotoSansKR-Regular.otf"
-
-    # 폰트 파일 다운로드 및 저장
-    if not os.path.exists(font_path):
-        import urllib.request
-        urllib.request.urlretrieve(font_url, font_path)
-
-    # 폰트 설정
-    fm.fontManager.addfont(font_path)
-    plt.rc('font', family='Noto Sans KR')
-    plt.rc('axes', unicode_minus=False)
+    font_path = "NotoSansKR-Regular.otf"  # 프로젝트 디렉토리에 업로드된 폰트 파일 경로
+    if os.path.exists(font_path):
+        fm.fontManager.addfont(font_path)
+        plt.rc('font', family='Noto Sans KR')
+        plt.rc('axes', unicode_minus=False)
+    else:
+        raise FileNotFoundError("폰트 파일을 찾을 수 없습니다. 'NotoSansKR-Regular.otf'를 프로젝트 디렉토리에 업로드하세요.")
 
 # 한국어 폰트 적용
 set_korean_font()
