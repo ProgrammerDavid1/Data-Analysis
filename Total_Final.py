@@ -453,6 +453,8 @@ elif option == '자녀 계획 및 출산 데이터':
     if uploaded_file:
         # 엑셀 파일 불러오기
         df = pd.read_excel(uploaded_file, sheet_name='자녀 필요성 인식')
+        # 한글 폰트 적용
+        set_korean_font()
 
         # 1. 헤더 재정의
         df.columns = ['항목', '2018', '2020', '2022']
