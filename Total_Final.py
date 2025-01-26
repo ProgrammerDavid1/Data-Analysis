@@ -8,29 +8,12 @@ from streamlit_option_menu import option_menu
 import os
 
 # 한글 폰트 설정
-def set_korean_font():
-    font_path = "NotoSansKR-VariableFont_wght.ttf"  # 프로젝트 디렉토리에 저장된 폰트 파일
-    if os.path.exists(font_path):
-        fm.fontManager.addfont(font_path)
-        plt.rc('font', family='Noto Sans KR')
-        plt.rc('axes', unicode_minus=False)
-    else:
-        raise FileNotFoundError("폰트 파일이 없습니다. 'NotoSansKR-VariableFont_wght.ttf'를 확인하세요.")
+plt.rcParams['font.family'] = 'Malgun Gothic'  # Windows 사용자
+plt.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
 
-# Streamlit 배경 색상 및 폰트 설정
-st.markdown(
-    """
-    <style>
-    body {
-        font-family: 'Noto Sans KR', sans-serif;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+# Streamlit 앱 시작
+st.title("한국어 폰트 설정 테스트")
 
-# 한국어 폰트 적용
-set_korean_font()
 
 #####################################
 #1. 결혼인식 대비 대한 혼인율 데이터
