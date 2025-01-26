@@ -13,7 +13,7 @@ st.set_page_config(page_title="혼인율 및 결혼 인식 변화 분석", layou
 
 # 한글 폰트 설정 함수
 def set_korean_font():
-    font_path = "NotoSansKR-Regular.ttf"  # 프로젝트 디렉토리에 업로드된 폰트 파일 경로
+    font_path = "NotoSansKR-VariableFont_wght.ttf"  # 프로젝트 디렉토리에 업로드된 폰트 파일 경로
     if os.path.exists(font_path):
         fm.fontManager.addfont(font_path)
         plt.rcParams['font.family'] = 'Noto Sans KR'
@@ -256,6 +256,9 @@ if option == "결혼 및 혼인 데이터":
         try:
             # 데이터 읽기
             data = pd.read_excel(uploaded_file)
+
+            # 한글 폰트 적용
+            set_korean_font()
         
             # 열 이름 간소화
             data.columns = ['지역', '연령별', '남성_혼인율', '여성_혼인율']
