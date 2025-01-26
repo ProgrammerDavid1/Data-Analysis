@@ -5,14 +5,28 @@ import streamlit as st
 import warnings
 from matplotlib import font_manager as fm
 from streamlit_option_menu import option_menu
+import os
 
+# 한글 폰트 설정 (Streamlit Cloud에서도 적용 가능하도록)
+def set_korean_font():
+    font_url = "https://github.com/google/fonts/raw/main/ofl/notosanskr/NotoSansKR-Regular.otf"
+    font_path = "/tmp/NotoSansKR-Regular.otf"
+
+    # 폰트 파일 다운로드 및 저장
+    if not os.path.exists(font_path):
+        import urllib.request
+        urllib.request.urlretrieve(font_url, font_path)
+
+    # 폰트 설정
+    fm.fontManager.addfont(font_path)
+    plt.rc('font', family='Noto Sans KR')
+    plt.rc('axes', unicode_minus=False)
+
+# 한국어 폰트 적용
+set_korean_font()
 
 # Streamlit 페이지 설정
 st.set_page_config(page_title="혼인율 및 결혼 인식 변화 분석", layout="wide")
-
-# 한글 폰트 설정 
-plt.rcParams['font.family'] = 'Malgun Gothic'
-plt.rcParams['axes.unicode_minus'] = False 
 
 #####################################
 #1. 결혼인식 대비 대한 혼인율 데이터
