@@ -7,31 +7,27 @@ from matplotlib import font_manager as fm
 from streamlit_option_menu import option_menu
 import os
 
-# 한글 폰트 설정
-plt.rcParams['font.family'] = 'Malgun Gothic'  # Windows 사용자
-plt.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
 
 # Streamlit 페이지 설정
-st.set_page_config(page_title="결혼과 출산 데이터 분석", layout="wide")
+st.set_page_config(page_title="혼인율 및 결혼 인식 변화 분석", layout="wide")
 
-# 한글 폰트 설정 (Noto Sans KR 사용)
+# 한글 폰트 설정 함수
 def set_korean_font():
-    font_path = "NotoSansKR-VariableFont_wght.ttf"  # 프로젝트 디렉토리에 업로드된 폰트 파일 경로
+    font_path = "NotoSansKR-Regular.ttf"  # 프로젝트 디렉토리에 업로드된 폰트 파일 경로
     if os.path.exists(font_path):
         fm.fontManager.addfont(font_path)
         plt.rcParams['font.family'] = 'Noto Sans KR'
-        plt.rcParams['axes.unicode_minus'] = False
+        plt.rcParams['axes.unicode_minus'] = False  # 마이너스 깨짐 방지
     else:
-        raise FileNotFoundError("폰트 파일을 찾을 수 없습니다. 'NotoSansKR-VariableFont_wght.ttf'를 업로드하세요.")
+        st.error("한글 폰트 파일을 찾을 수 없습니다. 'NotoSansKR-Regular.ttf' 파일을 프로젝트 디렉토리에 추가하세요.")
+        raise FileNotFoundError("한글 폰트 파일이 없습니다.")
 
 # 한글 폰트 적용
 set_korean_font()
 
-
 #####################################
 #1. 결혼인식 대비 대한 혼인율 데이터
 
-# 배경 색상을 변경하는 함수
 def set_background_color():
     st.markdown(
         """
@@ -44,9 +40,8 @@ def set_background_color():
         unsafe_allow_html=True
     )
 
-# Streamlit 앱 시작
+# 앱 시작
 set_background_color()
-
 
 # 사이드바 설정
 with st.sidebar:
@@ -211,9 +206,6 @@ if option == "결혼 및 혼인 데이터":
     
     # 그래프 시각화
     fig, ax = plt.subplots(figsize=(14, 8))
-    # 한글 폰트 설정을 명시적으로 적용
-    plt.rcParams['font.family'] = 'Noto Sans KR'
-    plt.rcParams['axes.unicode_minus'] = False
     df_plot.plot(kind="bar", stacked=True, ax=ax, alpha=0.85, cmap="tab10")
 
     # 그래프 스타일 설정
